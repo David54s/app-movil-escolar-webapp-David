@@ -1,0 +1,337 @@
+// Compensa el sidebar en desktop
+.main-content-admin {
+  margin-left: 220px;
+  transition: margin-left 0.3s;
+}
+
+@media (max-width: 991px) {
+  .main-content-admin {
+    margin-left: 0;
+  }
+}
+
+.wrapper{
+  height: auto;
+}
+
+/* Encabezados usados en su HTML */
+.header-home-admin {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+
+/* Cuerpos usados en su HTML */
+.body-admin {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* =========================
+   Contenedores
+   ========================= */
+.container {
+  max-width: 90vw;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* =========================
+   Campo de búsqueda con Bootstrap
+   ========================= */
+.search-container-bootstrap {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-container-bootstrap .input-group {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.search-container-bootstrap .input-group-text {
+  background-color: #fff;
+  border-right: none;
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.search-container-bootstrap .form-control {
+  border-left: none;
+  font-family: Nexa;
+  font-size: 15px;
+}
+
+.search-container-bootstrap .form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+/* =========================
+   Encabezados ordenables
+   ========================= */
+.sortable-header {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s;
+  font-family: Nexa-Bold;
+}
+
+.sortable-header:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+
+.sortable-header i {
+  font-size: 0.85rem;
+  margin-left: 5px;
+  opacity: 0.6;
+}
+
+.sortable-header:hover i {
+  opacity: 1;
+}
+
+/* =========================
+   Tabla responsive
+   ========================= */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  min-height: 1px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+}
+
+.table {
+  margin-bottom: 0;
+  font-family: Nexa;
+}
+
+.table thead {
+  font-family: Nexa-Bold;
+}
+
+.table td, .table th {
+  vertical-align: middle;
+  padding: 12px;
+}
+
+/* =========================
+   Acciones (Editar y Eliminar)
+   ========================= */
+.td-editar {
+  color: #0092B8 !important;
+  cursor: pointer !important;
+  font-size: 20px !important;
+  text-align: center;
+}
+
+.td-editar:hover {
+  color: #006179 !important;
+  font-size: 24px !important;
+}
+
+.td-eliminar {
+  color: #E84150 !important;
+  cursor: pointer !important;
+  font-size: 20px !important;
+  text-align: center;
+}
+
+.td-eliminar:hover {
+  color: #ce1626 !important;
+  font-size: 24px !important;
+}
+
+/* =========================
+   Información de paginación
+   ========================= */
+.pagination-info {
+  font-family: Nexa;
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.page-size-selector {
+  font-family: Nexa;
+  font-size: 14px;
+}
+
+.page-size-selector label {
+  margin-bottom: 0;
+  color: #6c757d;
+}
+
+.page-size-selector .form-select {
+  font-family: Nexa;
+}
+
+/* =========================
+   Paginación personalizada
+   ========================= */
+.pagination {
+  font-family: Nexa;
+  margin-top: 1rem;
+}
+
+.pagination .page-link {
+  cursor: pointer;
+  color: #0092B8;
+  border-color: #dee2e6;
+}
+
+.pagination .page-link:hover {
+  background-color: #e9ecef;
+  color: #006179;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #0092B8;
+  border-color: #0092B8;
+}
+
+.pagination .page-item.disabled .page-link {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* =========================
+   Títulos
+   ========================= */
+.title-perfil,
+.title-table {
+  display: block;
+  line-height: 1.1;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  letter-spacing: 0;
+  text-transform: capitalize;
+  opacity: 1;
+  font-family: Nexa-Bold;
+}
+
+.title-perfil {
+  margin-left: 3rem;
+  font-size: clamp(1.375rem, 1.1rem + 1.2vw, 2.25rem);
+  text-align: left;
+  color: #231F20;
+}
+
+.title-table {
+  margin-left: 3rem;
+  font-size: clamp(1.125rem, 0.95rem + 0.9vw, 1.875rem);
+  text-align: center;
+  color: #231F20;
+}
+
+/* =========================
+   Alerta de advertencia
+   ========================= */
+.alert-warning{
+  font-family: Nexa;
+  font-size: 16px;
+  color: #231F20;
+  text-align: center;
+  background: #FFF3CD;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 768px) {
+  .search-container-bootstrap {
+    max-width: 100%;
+  }
+
+  .pagination-info,
+  .page-size-selector {
+    font-size: 12px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .col-md-6 {
+    width: 100%;
+    justify-content: center !important;
+  }
+
+  .table {
+    font-size: 14px;
+  }
+
+  .table td, .table th {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 575px) {
+  .title-perfil,
+  .title-table {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .row.mt-5.mb-5 > .col-12 br {
+    display: none;
+  }
+
+  .title-perfil:first-of-type {
+    margin-bottom: 0.35rem;
+  }
+
+  .title-perfil:last-of-type {
+    margin-top: 0.25rem;
+  }
+
+  .pagination {
+    font-size: 14px;
+  }
+
+  .pagination .page-link {
+    padding: 6px 10px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 699px) {
+  .row.mt-5.mb-5 > .col-12 br {
+    display: none;
+  }
+
+  .title-perfil,
+  .title-table {
+    text-align: left;
+    margin-left: 1.5rem;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 740px) {
+  .row.mt-5.mb-5 > .col-12 br {
+    display: none;
+  }
+
+  .title-perfil,
+  .title-table {
+    text-align: left;
+    margin-left: 3rem;
+  }
+}
+
+@media (min-width: 741px) {
+  .title-perfil,
+  .title-table {
+    text-align: left;
+    margin-left: 3rem;
+  }
+}
