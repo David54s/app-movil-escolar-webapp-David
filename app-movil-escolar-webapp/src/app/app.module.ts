@@ -92,7 +92,7 @@ import { RegistroAcademicosComponent } from './partials/registro-academicos/regi
     MatSidenavModule,
     MatDialogModule,
     MatSortModule,
-    MatDialogModule
+
   ],
   providers: [
     CookieService,

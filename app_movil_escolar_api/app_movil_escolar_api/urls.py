@@ -32,7 +32,8 @@ urlpatterns = [
     
     path('eventos-academicos/', eventosAcademicos.EventosAcademicosView.as_view()),
     path('lista-eventos-academicos/', eventosAcademicos.EventosAcademicosAll.as_view()),
-    
+    path('lista-responsables/', users.ListaResponsables.as_view()),
+
 
 
     #Login

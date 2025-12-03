@@ -10,6 +10,7 @@ from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 from django.contrib.auth.models import Group
+from rest_framework.views import APIView
 
 class AdminAll(generics.CreateAPIView):
     #Esta función es esencial para todo donde se requiera autorización de inicio de sesión (token)
@@ -120,3 +121,35 @@ class AdminView(generics.CreateAPIView):
         
         return Response({"message": "Administrador actualizado correctamente", "admin": AdminSerializer(admin).data}, 200)
         # return Response(user,200)
+
+class ListaResponsables(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+    
+    def get(self, request):
+        responsables = []
+        
+        # 1. Obtener Administradores
+        # Usamos select_related para optimizar la consulta a la tabla User
+        admins = Administradores.objects.filter(user__is_active=1).select_related('user')
+        for admin in admins:
+            nombre_completo = f"{admin.user.first_name} {admin.user.last_name}"
+            responsables.append({
+                "id": admin.id,
+                "nombre": nombre_completo,
+                "rol": "Administrador",
+                "value": f"{nombre_completo} (Admin)" # Valor para guardar en BD
+            })
+            
+        # 2. Obtener Maestros
+        maestros = Maestros.objects.filter(user__is_active=1).select_related('user')
+        for maestro in maestros:
+            nombre_completo = f"{maestro.user.first_name} {maestro.user.last_name}"
+            responsables.append({
+                "id": maestro.id,
+                "nombre": nombre_completo,
+                "rol": "Maestro",
+                "value": f"{nombre_completo} (Maestro)" # Valor para guardar en BD
+            })
+            
+        # Devolvemos la lista combinada
+        return Response(responsables, status=200)
