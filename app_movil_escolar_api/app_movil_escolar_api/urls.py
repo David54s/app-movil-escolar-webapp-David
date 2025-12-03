@@ -8,6 +8,7 @@ from app_movil_escolar_api.views import users
 from app_movil_escolar_api.views import alumnos
 from app_movil_escolar_api.views import maestros
 from app_movil_escolar_api.views import auth
+from app_movil_escolar_api.views import eventosAcademicos
 # from sistema_escolar_api.views import alumnos
 # from sistema_escolar_api.views import maestros
 
@@ -26,6 +27,14 @@ urlpatterns = [
         path('maestros/', maestros.MaestrosView.as_view()),
     #Maestro Data
         path('lista-maestros/', maestros.MaestrosAll.as_view()),
+
+    #Eventos Academicos
+    
+    path('eventos-academicos/', eventosAcademicos.EventosAcademicosView.as_view()),
+    path('lista-eventos-academicos/', eventosAcademicos.EventosAcademicosAll.as_view()),
+    
+
+
     #Login
         path('login/', auth.CustomAuthToken.as_view()),
     #Logout
