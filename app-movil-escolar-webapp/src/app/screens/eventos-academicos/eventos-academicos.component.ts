@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { FacadeService } from 'src/app/services/facade.service';
 import { EventosAcademicosService } from 'src/app/services/eventos-academicos.service';
 import { EliminarEventoModalComponent } from 'src/app/modals/eliminar-evento-modal/eliminar-evento-modal.component';
+import { EditarEventoModalComponent } from 'src/app/modals/editar-evento-modal/editar-evento-modal.component';
 
 @Component({
   selector: 'app-eventos-academicos',
@@ -20,7 +21,7 @@ export class EventosAcademicosComponent implements OnInit, AfterViewInit {
   public token: string = "";
   public lista_eventos: any[] = [];
 
-  displayedColumns: string[] = ['nombre', 'tipo', 'fecha', 'hora', 'lugar', 'publico', 'responsable', 'cupo', 'editar', 'eliminar'];
+  displayedColumns: string[] = [];
   dataSource = new MatTableDataSource<DatosEvento>();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -42,6 +43,9 @@ export class EventosAcademicosComponent implements OnInit, AfterViewInit {
         this.router.navigate([""]);
     }
 
+    // Configurar las columnas según el rol
+    this.configurarColumnas();
+
     this.obtenerEventos();
   }
 
@@ -50,10 +54,22 @@ export class EventosAcademicosComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  private configurarColumnas() {
+    // Columnas base que todos pueden ver
+    const columnasBase = ['nombre', 'tipo', 'fecha', 'hora', 'lugar', 'publico', 'responsable', 'cupo'];
+
+    // Si es administrador, agregar columnas de editar y eliminar
+    if (this.rol === 'administrador') {
+      this.displayedColumns = [...columnasBase, 'editar', 'eliminar'];
+    } else {
+      this.displayedColumns = columnasBase;
+    }
+  }
+
   public obtenerEventos() {
     this.eventosService.obtenerListaEventosAcademicos().subscribe(
         (response) => {
-            this.lista_eventos = response;
+            this.lista_eventos = this.filtrarEventosPorRol(response);
             this.dataSource.data = this.lista_eventos;
 
             setTimeout(() => {
@@ -92,6 +108,30 @@ export class EventosAcademicosComponent implements OnInit, AfterViewInit {
     );
   }
 
+  private filtrarEventosPorRol(eventos: any[]): any[] {
+    if (this.rol === 'administrador') {
+      return eventos;
+    }
+
+    return eventos.filter(evento => {
+      const publicoObjetivo = evento.publico_objetivo.toLowerCase();
+
+      if (publicoObjetivo.includes('publico general')) {
+        return true;
+      }
+
+      if (this.rol === 'maestro' && publicoObjetivo.includes('profesores')) {
+        return true;
+      }
+
+      if (this.rol === 'alumno' && publicoObjetivo.includes('estudiantes')) {
+        return true;
+      }
+
+      return false;
+    });
+  }
+
   public hacerFiltro(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -106,7 +146,17 @@ export class EventosAcademicosComponent implements OnInit, AfterViewInit {
   }
 
   public goEditar(idEvento: number) {
-    this.router.navigate(["registro-academicos/" + idEvento]);
+    const dialogRef = this.dialog.open(EditarEventoModalComponent, {
+      data: { id: idEvento },
+      height: '288px',
+      width: '328px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && result.isConfirmed) {
+        this.router.navigate(["registro-academicos/" + idEvento]);
+      }
+    });
   }
 
   public delete(idEvento: number) {
@@ -118,11 +168,11 @@ export class EventosAcademicosComponent implements OnInit, AfterViewInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        if (result.isDeleted) {
+        if (result && result.isDeleted) {
           console.log("Evento eliminado");
           alert("Evento eliminado correctamente.");
           window.location.reload();
-        } else {
+        } else if (result && !result.isDeleted) {
           alert("Evento no se ha podido eliminar.");
           console.log("No se eliminó el evento");
         }
