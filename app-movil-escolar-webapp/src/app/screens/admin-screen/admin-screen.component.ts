@@ -204,24 +204,7 @@ export class AdminScreenComponent implements OnInit {
   }
 
   public delete(idUser: number){
-
-    // Se obtiene el ID del usuario en sesión, es decir, quien intenta eliminar
-    const dialogRef = this.dialog.open(EliminarUserModalComponent,{
-      data: {id: idUser, rol: 'administrador'}, //Se pasan valores a través del componente
-      height: '288px',
-      width: '328px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result.isDelete){
-        console.log("Admin eliminado");
-        alert("Administrador eliminado correctamente");
-        //Recargar página
-        window.location.reload();
-      }else{
-        alert("Administrador no se ha podido eliminar");
-        console.log("No se eliminó el admin");
-      }
-    });
-}
+    // Mostrar alerta indicando que un administrador no puede eliminar a otro
+    alert("Un administrador no puede eliminar a otro administrador.");
+  }
 }

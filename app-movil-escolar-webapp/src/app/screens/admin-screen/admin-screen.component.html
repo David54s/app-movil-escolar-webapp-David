@@ -79,13 +79,7 @@
                 <td>{{admin.rfc}}</td>
                 <td>{{admin.ocupacion}}</td>
                 <td class="td-editar"><i class="bi bi-pencil-square" (click)="goEditar(admin.id)"></i></td>
-                <td class="td-eliminar">
-                <i class="bi bi-trash3-fill"
-                  [class.disabled]="true"
-                  style="cursor: not-allowed; opacity: 0.5;"
-                  title="Administrador no puede eliminar a administrador">
-                </i>
-              </td>
+                <td class="td-eliminar"><i class="bi bi-trash3-fill" (click)="delete(admin.id)"></i></td>
               </tr>
             </tbody>
           </table>
