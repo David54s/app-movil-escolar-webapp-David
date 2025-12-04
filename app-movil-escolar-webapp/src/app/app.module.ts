@@ -54,6 +54,8 @@ import { EliminarEventoModalComponent } from './modals/eliminar-evento-modal/eli
 import { EditarEventoModalComponent } from './modals/editar-evento-modal/editar-evento-modal.component';
 import { GraficasScreenComponent } from './screens/graficas-screen/graficas-screen.component'; // <--- 1. Importa el módulo
 
+import { NgChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -100,7 +102,8 @@ import { GraficasScreenComponent } from './screens/graficas-screen/graficas-scre
     MatSidenavModule,
     MatDialogModule,
     MatSortModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    NgChartsModule
 
 
   ],

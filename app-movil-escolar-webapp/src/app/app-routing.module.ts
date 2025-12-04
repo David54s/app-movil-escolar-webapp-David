@@ -10,6 +10,7 @@ import { MaestrosScreenComponent } from './screens/maestros-screen/maestros-scre
 import { AdminScreenComponent } from './screens/admin-screen/admin-screen.component';
 import { RegistroAcademicosComponent } from './partials/registro-academicos/registro-academicos.component';
 import { EventosAcademicosComponent } from './screens/eventos-academicos/eventos-academicos.component';
+import { GraficasScreenComponent } from './screens/graficas-screen/graficas-screen.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,9 @@ const routes: Routes = [
       { path: 'administrador', component: AdminScreenComponent }, // Keep legacy route
       { path: 'alumnos', component: AlumnosScreenComponent },
       { path: 'maestros', component: MaestrosScreenComponent },
-      { path: 'eventos-academicos', component: EventosAcademicosComponent}
+      { path: 'eventos-academicos', component: EventosAcademicosComponent},
+      { path: 'graficas', component: GraficasScreenComponent },
+
 
     ]
   },
