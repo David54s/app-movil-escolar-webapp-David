@@ -20,6 +20,9 @@ const routes: Routes = [
       { path: 'login', component: LoginScreenComponent },
       { path: 'registro-usuarios', component: RegistroUsuariosScreenComponent },
       { path: 'registro-usuarios/:rol/:id', component: RegistroUsuariosScreenComponent },     //Corrección hecha por Isis
+      { path: 'registro-academicos', component: RegistroAcademicosComponent},
+      { path: 'registro-academicos/:id', component: RegistroAcademicosComponent }, // Editar evento
+
 
     ]
   },
@@ -31,8 +34,8 @@ const routes: Routes = [
       { path: 'administrador', component: AdminScreenComponent }, // Keep legacy route
       { path: 'alumnos', component: AlumnosScreenComponent },
       { path: 'maestros', component: MaestrosScreenComponent },
-      { path: 'registro-academicos', component: RegistroAcademicosComponent},
       { path: 'eventos-academicos', component: EventosAcademicosComponent}
+
     ]
   },
   // fallback route

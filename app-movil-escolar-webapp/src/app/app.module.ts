@@ -49,7 +49,9 @@ import { EliminarUserModalComponent } from './modals/eliminar-user-modal/elimina
 import { EventosAcademicosComponent } from './screens/eventos-academicos/eventos-academicos.component';
 import { RegistroAcademicosComponent } from './partials/registro-academicos/registro-academicos.component';
 
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'; // <--- 1. Importa el módulo
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { EliminarEventoModalComponent } from './modals/eliminar-evento-modal/eliminar-evento-modal.component';
+import { EditarEventoModalComponent } from './modals/editar-evento-modal/editar-evento-modal.component'; // <--- 1. Importa el módulo
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker'; // <--- 1
     EliminarUserModalComponent,
     EventosAcademicosComponent,
     RegistroAcademicosComponent,
+    EliminarEventoModalComponent,
+    EditarEventoModalComponent,
 
   ],
   imports: [

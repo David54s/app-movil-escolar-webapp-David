@@ -81,63 +81,53 @@ export class RegistroAcademicosComponent implements OnInit {
   }
 
   public registrar() {
-    this.errors = {};
-    this.errors = this.eventosService.validarEventoAcademico(this.evento);
-    if (Object.keys(this.errors).length > 0) {
-      let listaErrores = "";
-      Object.values(this.errors).forEach(err => {
-        listaErrores += `• ${err}\n`;
-      });
-      alert("No se puede registrar:\n" + listaErrores);
-      return false;
-    }
-    const eventoAEnviar = { ...this.evento };
-    if(Array.isArray(this.evento.publico_objetivo)){
-        eventoAEnviar.publico_objetivo = this.evento.publico_objetivo.join(', ');
-    }
+  this.errors = {};
+  this.errors = this.eventosService.validarEventoAcademico(this.evento);
 
-    this.eventosService.registrarEventoAcademico(eventoAEnviar).subscribe(
-      (response) => {
-        alert("Evento registrado exitosamente");
-        this.router.navigate(['/eventos-academicos']);
-      },
-      (error) => {
-        alert("Error al registrar el evento");
-      }
-    );
+  if (Object.keys(this.errors).length > 0) {
+    return;
   }
 
-  // 👇 ACTUALIZAR AHORA ES DIRECTO (SIN MODAL)
-  public actualizar() {
-    // 1. Validar
-    this.errors = {};
-    this.errors = this.eventosService.validarEventoAcademico(this.evento);
-    if (Object.keys(this.errors).length > 0) {
-      let listaErrores = "";
-      Object.values(this.errors).forEach(err => {
-        listaErrores += `• ${err}\n`;
-      });
-      alert("No se puede actualizar:\n" + listaErrores);
-      return false;
-    }
-
-    // 2. Preparar datos
-    const eventoAEnviar = { ...this.evento };
-    if(Array.isArray(this.evento.publico_objetivo)){
-      eventoAEnviar.publico_objetivo = this.evento.publico_objetivo.join(', ');
-    }
-
-    // 3. Llamar servicio directo
-    this.eventosService.actualizarEventoAcademico(eventoAEnviar).subscribe(
-      (response) => {
-        alert("Evento actualizado correctamente");
-        this.router.navigate(['/eventos-academicos']);
-      },
-      (error) => {
-        alert("Error al actualizar el evento");
-      }
-    );
+  const eventoAEnviar = { ...this.evento };
+  if(Array.isArray(this.evento.publico_objetivo)){
+    eventoAEnviar.publico_objetivo = this.evento.publico_objetivo.join(', ');
   }
+
+  this.eventosService.registrarEventoAcademico(eventoAEnviar).subscribe(
+    (response) => {
+      alert("Evento registrado exitosamente");
+      this.router.navigate(['/eventos-academicos']);
+    },
+    (error) => {
+      alert("Error al registrar el evento");
+    }
+  );
+}
+
+public actualizar() {
+  this.errors = {};
+  this.errors = this.eventosService.validarEventoAcademico(this.evento);
+
+  if (Object.keys(this.errors).length > 0) {
+    return;
+  }
+
+  const eventoAEnviar = { ...this.evento };
+  if(Array.isArray(this.evento.publico_objetivo)){
+    eventoAEnviar.publico_objetivo = this.evento.publico_objetivo.join(', ');
+  }
+
+  this.eventosService.actualizarEventoAcademico(eventoAEnviar).subscribe(
+    (response) => {
+      alert("Evento actualizado correctamente");
+      this.router.navigate(['/eventos-academicos']);
+    },
+    (error) => {
+      alert("Error al actualizar el evento");
+    }
+  );
+}
+
 
 
 

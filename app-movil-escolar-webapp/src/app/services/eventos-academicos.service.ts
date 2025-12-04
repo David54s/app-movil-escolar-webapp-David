@@ -31,7 +31,7 @@ export class EventosAcademicosService {
       'tipo_evento': '',
       'fecha_realizacion': '',
       'hora_inicio': '',
-      'hora_fin': '',
+      'hora_final': '',
       'lugar': '',
       'publico_objetivo': [],
       'programa_educativo': '',
@@ -78,17 +78,17 @@ export class EventosAcademicosService {
     if(!this.validatorService.required(data["hora_inicio"])){
       error["hora_inicio"] = this.errorService.required;
     }
-    //hora_fin
-    if(!this.validatorService.required(data["hora_fin"])){
-      error["hora_fin"] = this.errorService.required;
+    //hora_final
+    if(!this.validatorService.required(data["hora_final"])){
+      error["hora_final"] = this.errorService.required;
     }
 
-    if (data["hora_inicio"] && data["hora_fin"]) {
+    if (data["hora_inicio"] && data["hora_final"]) {
       const inicioMinutos = this.convertirHoraAMinutos(data["hora_inicio"]);
-      const finMinutos = this.convertirHoraAMinutos(data["hora_fin"]);
+      const finMinutos = this.convertirHoraAMinutos(data["hora_final"]);
 
       if (inicioMinutos >= finMinutos) {
-        error["hora_fin"] = "La hora final debe ser mayor a la inicial";
+        error["hora_final"] = "La hora final debe ser mayor a la inicial";
       }
     }
 
