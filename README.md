@@ -1,5 +1,4 @@
-# 📚 Sistema de Gestión de Eventos Académicos
-
+Sistema de registro de usuarios y Eventos Academicos
 Sistema web para la gestión y administración de eventos académicos con control de acceso por roles (Administrador, Maestro, Alumno).
 
 ## 🚀 Características
