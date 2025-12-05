@@ -194,33 +194,6 @@ curl -X GET https://api.example.com/lista-eventos-academicos/ \
 - Campo requerido
 - Solo valores numéricos
 
-## 📦 Dependencias Principales
-
-### Backend
-```
-Django==3.2.18
-djangorestframework==3.14.0
-django-cors-headers==3.14.0
-mysqlclient==2.1.1
-```
-
-### Frontend
-```json
-{
-  "@angular/core": "^14.0.0",
-  "@angular/material": "^14.0.0",
-  "rxjs": "^7.5.0"
-}
-```
-
-## 👥 Contribuir
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/NuevaCaracteristica`)
-3. Commit tus cambios (`git commit -m 'Agregar nueva característica'`)
-4. Push a la rama (`git push origin feature/NuevaCaracteristica`)
-5. Abre un Pull Request
-
 ## 📄 Licencia
 
 Este proyecto fue desarrollado con fines académicos.
