@@ -225,15 +225,10 @@ mysqlclient==2.1.1
 
 Este proyecto fue desarrollado con fines académicos.
 
-## 👨‍💻 Autor
-
-**David** - Proyecto Final - Aplicación Móvil Escolar
 
 ## 🙏 Agradecimientos
 
-- Material Design por los componentes UI
-- Django REST Framework por facilitar la creación de APIs
-- Angular por el framework robusto de frontend
+- Al profe yael
 
 ---
 
